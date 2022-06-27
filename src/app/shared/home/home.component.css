@@ -1,0 +1,23 @@
+.container {
+  height: 100%;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  height: 100%;
+  width: 100%;
+}
+
+.example-sidenav {
+  width: 250px;
+}
+
+.menu-color{
+  color: white
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}

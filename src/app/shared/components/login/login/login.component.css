@@ -1,0 +1,80 @@
+.auth{
+  width: 500px;
+  height: 500px;
+  margin:auto;
+  padding-top: 100px;
+}
+
+.flex-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.flex-container-login{
+  display: flex;
+  width: 500px;
+  height: 450px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  box-shadow: 5px 20px 50px #000;
+  border-radius: 8px;
+  flex-direction: column;
+}
+
+.campo{
+  height: 45px;
+  width: 350px;
+  border-radius: 5px;
+}
+
+.botao{
+  margin-top: 20px;
+  color: white;
+  background-color: rgb(41, 41, 41);
+  text-align: center;
+}
+
+.botao button{
+  width: 100%;
+}
+
+
+.loading-spinner{
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+}
+
+.fonte {
+  color: white;
+  width: 100%;
+}
+
+.mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgb(255, 255, 255) !important;
+ }
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgb(255, 255, 255) !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: rgb(255, 255, 255) !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: #7a6749 !important;
+}
+
+::ng-deep .mat-input-wrapper{
+  width:400px !important;
+}

@@ -1,0 +1,80 @@
+<mat-card>
+  <button
+    mat-fab
+    color="primary"
+    aria-label="Example icon button with a delete icon"
+    (click)="onAdd()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <mat-toolbar color="primary">
+    <span>Empresas</span>
+  </mat-toolbar>
+
+  <div *ngIf="empresas$ | async as empresas; else loading">
+    <table mat-table [dataSource]="empresas" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let empresa">{{ empresa.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="razaoSocial">
+        <th mat-header-cell *matHeaderCellDef>Razao Social</th>
+        <td mat-cell *matCellDef="let empresa">{{ empresa.razaoSocial }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nomeFantasia">
+        <th mat-header-cell *matHeaderCellDef>Nome Fantasia</th>
+        <td mat-cell *matCellDef="let empresa">{{ empresa.nomeFantasia }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cnpj">
+        <th mat-header-cell *matHeaderCellDef>CNPJ</th>
+        <td mat-cell *matCellDef="let empresa">{{ empresa.cnpj }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ie">
+        <th mat-header-cell *matHeaderCellDef>I.E.</th>
+        <td mat-cell *matCellDef="let empresa">{{ empresa.ie }}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="uf">
+        <th mat-header-cell *matHeaderCellDef>UF</th>
+        <td mat-cell *matCellDef="let empresa">{{ empresa.uf }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cidade">
+        <th mat-header-cell *matHeaderCellDef>cidade</th>
+        <td mat-cell *matCellDef="let empresa">{{ empresa.cidade }}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="actions">
+
+        <mat-header-cell *matHeaderCellDef>
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let empresa">
+          <button mat-icon-button aria-label="Editar empresa" (click)="onEdit(empresa)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" aria-label="Excluir empresa">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <ng-template #loading>
+    <div class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</mat-card>

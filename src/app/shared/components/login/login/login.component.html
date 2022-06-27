@@ -1,0 +1,37 @@
+<div class="auth">
+<div class="flex-container-login">
+  <div class="flex-container">
+    <img class="block" src="https://files-digisite.s3-sa-east-1.amazonaws.com/clients/32/ONJSUQ7QUUD9LNTK9I7VJ5U5NN4EPD.png" alt="Advocacia BGA" width="200" height="75">
+  </div>
+  <form class="form" (ngSubmit)="onSubmit()" autocomplete="off" #loginForm="ngForm">
+    <div *ngIf="hideSpinner; else loading">
+
+      <div class="campo">
+        <mat-form-field class="fonte">
+          <mat-label style="color:white">Email</mat-label>
+          <input type="email" matInput [(ngModel)]="login.username" name="email" required/>
+        </mat-form-field>
+      </div>
+
+      <br>
+
+      <div class="campo">
+        <mat-form-field class="fonte" >
+          <mat-label style="color:white">Senha</mat-label>
+          <input type="password" matInput [(ngModel)]="login.password" name="password" required/>
+        </mat-form-field>
+      </div>
+
+      <div class="botao">
+        <button type="submit" mat-button [disabled]="loginForm.form.invalid">Login</button>
+      </div>
+
+    </div>
+  </form>
+</div>
+</div>
+<ng-template #loading>
+  <div class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

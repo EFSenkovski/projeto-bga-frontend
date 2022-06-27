@@ -1,0 +1,68 @@
+<mat-card>
+  <button
+    mat-fab
+    color="primary"
+    (click)="onAdd()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <mat-toolbar color="primary">
+    <span>Caixas</span>
+  </mat-toolbar>
+
+  <div *ngIf="caixas$ | async as caixas; else loading">
+    <table mat-table [dataSource]="caixas" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let caixa">{{ caixa.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="empresa">
+        <th mat-header-cell *matHeaderCellDef>Empresa</th>
+        <td mat-cell *matCellDef="let caixa">{{ caixa.empresa.razaoSocial }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef>Descrição</th>
+        <td mat-cell *matCellDef="let caixa">{{ caixa.descricao }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="valorAtual">
+        <th mat-header-cell *matHeaderCellDef>Valor Atual</th>
+        <td mat-cell *matCellDef="let caixa">{{ caixa.valorAtual }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataUltimaMovimentacao">
+        <th mat-header-cell *matHeaderCellDef>Data Últ. Movimentacao</th>
+        <td mat-cell *matCellDef="let caixa">{{ caixa.dataUltimaMovimentacao }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+
+        <mat-header-cell *matHeaderCellDef>
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let caixa">
+          <button mat-icon-button aria-label="Editar caixa" (click)="onEdit(caixa)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" aria-label="Excluir caixa">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </mat-cell>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <ng-template #loading>
+    <div class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</mat-card>
