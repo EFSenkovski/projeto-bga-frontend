@@ -30,14 +30,6 @@
       </mat-form-field>
 
       <mat-form-field class="full-width">
-        <mat-select placeholder="Tipo Movimentação" formControlName="tipoMovimento">
-          <mat-option *ngFor="let t of tiposMovimento" [value]="t.value">
-            {{t.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field class="full-width">
         <input matInput [matDatepicker]="picker" placeholder="Data Movimentação" formControlName="dataMovimento">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>

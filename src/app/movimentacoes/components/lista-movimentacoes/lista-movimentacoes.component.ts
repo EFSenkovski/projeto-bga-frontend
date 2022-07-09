@@ -26,7 +26,6 @@ export class ListaMovimentacoesComponent implements OnInit {
     this.movimentos$ = movimentosService.list()
     .pipe(
       catchError(error => {
-        console.log(error);
         this.onError(error)
         return of([])
       })

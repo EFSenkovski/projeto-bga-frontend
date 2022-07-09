@@ -1,0 +1,6 @@
+import { Pessoa } from './pessoa';
+export interface PessoaComissao {
+    pessoaOrigem: Pessoa;
+    pessoaDestino: Pessoa;
+    percentualComissao: number;
+}

@@ -1,4 +1,3 @@
-import { MovimentacoesModule } from './movimentacoes/movimentacoes.module';
 import { LoginComponent } from './shared/components/login/login/login.component';
 import { GuardGuard } from './usuarios/guard.guard';
 import { HomeComponent } from './shared/home/home.component';
@@ -15,16 +14,16 @@ const routes: Routes = [
         loadChildren: () => import('./usuarios/usuarios.module').then (m => m.UsuariosModule)
       },
       {
-        path: 'empresas',
-        loadChildren: () => import('./empresas/empresas.module').then (m => m.EmpresasModule)
-      },
-      {
         path: 'caixas',
         loadChildren: () => import('./caixas/caixas.module').then (m => m.CaixasModule)
       },
       {
         path: 'movimentacoes',
         loadChildren: () => import('./movimentacoes/movimentacoes.module').then (m => m.MovimentacoesModule)
+      },
+      {
+        path: 'pessoas',
+        loadChildren: () => import('./pessoas/pessoas.module').then (m => m.PessoasModule)
       },
     ],
     canActivate: [GuardGuard]

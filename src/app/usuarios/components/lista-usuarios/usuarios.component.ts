@@ -27,7 +27,6 @@ export class UsuariosComponent implements OnInit {
     this.usuarios$ = usuarioService.list()
     .pipe(
       catchError(error => {
-        console.log(error);
         this.onError(error)
         return of([])
       })

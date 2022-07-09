@@ -3,18 +3,17 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span><a href="/">Controle Caixa</a></span>
-  <button mat-icon-button (click)="logout()">
-    <mat-icon>logout</mat-icon>
-  </button>
+  <div class="logout">
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
 
 <mat-drawer-container class="container" autosize>
   <mat-drawer #drawer opened class="example-sidenav" mode="side">
     <mat-nav-list>
-      <mat-list-item class="menu-item"><a matLine href="/usuarios">Usuários</a></mat-list-item>
-      <mat-list-item><a matLine href="/empresas">Empresas</a></mat-list-item>
-      <mat-list-item><a matLine href="/caixas">Caixas</a></mat-list-item>
-      <mat-list-item><a matLine href="/movimentacoes">Movimentações</a></mat-list-item>
+      <mat-list-item class="menu-item"><a matLine routerLink="/pessoas">Pessoas</a></mat-list-item>
     </mat-nav-list>
   </mat-drawer>
 

@@ -21,8 +21,7 @@ import { HomeComponent } from './home/home.component';
     AppMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule,
-
+    RouterModule
   ]
 })
 export class SharedModule { }

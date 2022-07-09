@@ -4,10 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 
-import { Empresa } from './../../../empresas/model/empresa';
-import { EmpresasService } from './../../../empresas/services/empresas.service';
 import { CaixasService } from './../../services/caixas.service';
 
 @Component({
@@ -20,16 +17,13 @@ export class FormCaixasComponent implements OnInit {
   form: FormGroup;
   hide = true;
   title: string;
-  empresas$: Observable<Empresa[]>;
 
   constructor(private formBuilder: FormBuilder,
     private caixasService: CaixasService,
     private snackBar: MatSnackBar,
     private location: Location,
-    private activatedRoute: ActivatedRoute,
-    private empresasService: EmpresasService) {
-      const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.empresas$ = this.empresasService.list();
+    private activatedRoute: ActivatedRoute) {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.title = '';
     this.form = this.formBuilder.group({
       id: [null],

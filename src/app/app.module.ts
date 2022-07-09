@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -23,7 +24,8 @@ import { SharedModule } from './shared/shared.module';
     AppMaterialModule,
     HttpClientModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    MatMomentDateModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

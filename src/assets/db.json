@@ -1,0 +1,40 @@
+{
+  "pessoas": [
+    {
+      "id": 1,
+      "nomeRazaoSocial": "Teste ltda",
+      "nomeFantasia": "Nome teste",
+      "pessoaFisicaJuridica": "J",
+      "cpfCnpj": "75124987000155",
+      "rgIe": "190108861",
+      "email": "teste@gmail.com",
+      "dataNascimentoFundacao": "2022-01-01",
+      "endereco": "",
+      "cidade": "Realeza",
+      "cep": "",
+      "uf": "",
+      "telefone": "",
+      "celular": "",
+      "tipoPessoa": {"id": 1, "descricao": "Cliente"},
+      "observacao": ""
+    },
+    {
+      "id": 1,
+      "nomeRazaoSocial": "Eduardo",
+      "nomeFantasia": "Teste",
+      "pessoaFisicaJuridica": "F",
+      "cpfCnpj": "71147007098",
+      "rgIe": "6005108193",
+      "email": "eduardosenkovski@gmail.com",
+      "dataNascimentoFundacao": "1995-02-15",
+      "endereco": "",
+      "cidade": "Santa Izabel do Oeste",
+      "cep": "",
+      "uf": "",
+      "telefone": "",
+      "celular": "46 988207153",
+      "tipoPessoa": {"id": 1, "descricao": "Parceiro"},
+      "observacao": ""
+    }
+  ]
+}

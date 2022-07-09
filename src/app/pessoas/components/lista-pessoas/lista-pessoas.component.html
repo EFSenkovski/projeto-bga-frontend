@@ -1,0 +1,86 @@
+<mat-card>
+  <button
+    class="botao-add"
+    mat-fab
+    color="primary"
+    aria-label="Adicionar"
+    (click)="onAdd()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <mat-toolbar color="primary">
+    <span>Pessoas</span>
+  </mat-toolbar>
+
+  <div *ngIf="pessoas$ | async as pessoas; else loading">
+    <section class="pesquisa">
+      <mat-form-field class="pesquisa-campo">
+        <mat-label>Filtrar por Nome/Razão Social</mat-label>
+        <input matInput [(ngModel)]="filtro" (keydown.enter)="onPesquisar()" autofocus #inputFiltro>
+      </mat-form-field>
+
+      <button mat-mini-fab color="primary" class="botao-pesquisar" (click)="onPesquisar()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </section>
+
+    <table mat-table [dataSource]="pessoas" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let pessoa">{{ pessoa.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nomeRazaoSocial">
+        <th mat-header-cell *matHeaderCellDef>Nome/Razão Social</th>
+        <td mat-cell *matCellDef="let pessoa">{{ pessoa.nomeRazaoSocial }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nomeFantasia">
+        <th mat-header-cell *matHeaderCellDef>Nome/Fantasia</th>
+        <td mat-cell *matCellDef="let pessoa">{{ pessoa.nomeFantasia }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let pessoa">{{ pessoa.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="celular">
+        <th mat-header-cell *matHeaderCellDef>Celular</th>
+        <td mat-cell *matCellDef="let pessoa">{{ pessoa.celular }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipoPessoa">
+        <th mat-header-cell *matHeaderCellDef>Tipo</th>
+        <td mat-cell *matCellDef="let pessoa">{{ pessoa.tipoPessoa.descricao }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+
+        <mat-header-cell *matHeaderCellDef>
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let pessoa">
+          <button mat-icon-button aria-label="Editar usuário" (click)="onEdit(pessoa)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" aria-label="Excluir usuário" (click)="onDelete(pessoa)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <ng-template #loading>
+    <div class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</mat-card>

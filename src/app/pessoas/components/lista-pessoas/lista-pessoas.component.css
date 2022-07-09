@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+}
+
+.botao-add {
+  float: right;
+  margin: 10px;
+}
+
+.botao-pesquisar {
+  float: right;
+  margin: 10px;
+}
+
+.loading-spinner {
+  padding: 25px;
+  background-color: rgba(0,0,0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pesquisa{
+  margin: 1em auto;
+  display: flex;
+}
+
+.pesquisa-campo{
+  width: 100%;
+}

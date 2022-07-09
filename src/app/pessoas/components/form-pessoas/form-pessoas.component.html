@@ -1,0 +1,117 @@
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab label="Dados">
+    <mat-card class="main-card">
+      <mat-card-header>
+        <mat-card-title> {{title}} </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+
+          <form [formGroup]="form" class="min-width">
+
+            <mat-form-field>
+              <mat-select (selectionChange)="onChangePessoaJF()" placeholder="Física/Jurídica" formControlName="pessoaFisicaJuridica">
+                <mat-option *ngFor="let p of pessoaFisicaJuridica" [value]="p.id">
+                  {{p.descricao}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="flex">
+              <mat-form-field class="inline">
+                <input matInput placeholder={{placeholders.plNomeRazaoSocial}} formControlName="nomeRazaoSocial">
+              </mat-form-field>
+
+              <mat-form-field class="inline">
+                <input matInput placeholder={{placeholders.plNomeFantasia}} formControlName="nomeFantasia">
+              </mat-form-field>
+            </div>
+
+            <div class="flex">
+              <mat-form-field class="inline">
+                <input matInput [matDatepicker]="picker" placeholder={{placeholders.plDataNascimentoFundacao}} formControlName="dataNascimentoFundacao">
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field class="inline">
+                <input matInput placeholder={{placeholders.plCpfCnpj}} formControlName="cpfCnpj">
+              </mat-form-field>
+
+              <mat-form-field class="inline">
+                <input matInput placeholder={{placeholders.plRgIe}} formControlName="rgIe">
+              </mat-form-field>
+            </div>
+
+            <div class="flex">
+              <mat-form-field class="inline">
+                <input matInput placeholder="Email" formControlName="email">
+              </mat-form-field>
+
+              <mat-form-field class="inline">
+                <input matInput placeholder="Telefone" formControlName="telefone">
+              </mat-form-field>
+
+              <mat-form-field class="inline">
+                <input matInput placeholder="Celular" formControlName="celular">
+              </mat-form-field>
+            </div>
+
+
+            <div class="flex">
+              <mat-form-field class="inline">
+                <input matInput placeholder="Endereço" formControlName="endereco">
+              </mat-form-field>
+
+              <mat-form-field class="inline">
+                <input matInput placeholder="Cidade" formControlName="cidade">
+              </mat-form-field>
+            </div>
+            <div class="flex">
+              <mat-form-field style="margin-right: 2px;">
+                <input matInput placeholder="CEP" formControlName="cep">
+              </mat-form-field>
+
+              <mat-form-field style="margin-right: 2px;">
+                <input matInput placeholder="UF" formControlName="uf">
+              </mat-form-field>
+
+              <mat-form-field class="inline">
+                <input  matInput placeholder="Observação" formControlName="observacao">
+              </mat-form-field>
+            </div>
+
+            <div class="flex">
+              <mat-form-field class="inline">
+                <mat-select placeholder="Tipo" formControlName="tipoPessoa">
+                  <mat-option *ngFor="let t of tiposPessoas" [value]="t.id">
+                    {{t.descricao}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="inline">
+                <mat-select placeholder="Status" formControlName="ativo">
+                  <mat-option *ngFor="let a of ativo" [value]="a.id">
+                    {{a.descricao}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </form>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+        <button mat-button (click)="onCancel()">Cancelar</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Serviços">
+   <mat-card class="main-card">
+
+   </mat-card>
+  </mat-tab>
+</mat-tab-group>

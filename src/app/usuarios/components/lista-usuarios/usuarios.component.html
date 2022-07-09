@@ -14,7 +14,7 @@
   <div *ngIf="usuarios$ | async as usuarios; else loading">
     <table mat-table [dataSource]="usuarios" class="mat-elevation-z8">
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <th mat-header-cell *matHeaderCellDef>Id</th>
         <td mat-cell *matCellDef="let usuario">{{ usuario.id }}</td>
       </ng-container>
 

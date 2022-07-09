@@ -1,7 +1,7 @@
-import { FormUsuariosComponent } from './components/form-usuarios/form-usuarios.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { FormUsuariosComponent } from './components/form-usuarios/form-usuarios.component';
 import { UsuariosComponent } from './components/lista-usuarios/usuarios.component';
 
 const routes: Routes = [

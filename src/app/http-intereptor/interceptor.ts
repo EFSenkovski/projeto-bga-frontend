@@ -1,8 +1,10 @@
+import { Location } from '@angular/common';
+import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsuariosService } from '../usuarios/services/usuarios.service'
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { catchError, throwError } from 'rxjs';
+import { catchError, throwError, of, Observable } from 'rxjs';
+
+import { UsuariosService } from '../usuarios/services/usuarios.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +13,11 @@ export class Interceptor implements HttpInterceptor{
 
   constructor (
     private usuarioService: UsuariosService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ){}
 
   intercept(req: HttpRequest<any>, next: HttpHandler){
-    console.log('OE')
     const token = this.usuarioService.getAuthorizationToken();
     let request: HttpRequest<any> = req;
     if (token){
@@ -23,42 +25,44 @@ export class Interceptor implements HttpInterceptor{
         request = req.clone({
           headers: req.headers.set('Authorization', `Bearer ${token}`)
         })
+        return next.handle(request)
+        .pipe(
+          catchError(this.handleError)
+        );
       } else{
-        let retorno = false
         this.usuarioService.getAcessTokenWithRefreshToken().subscribe({
           next: (v) => {
-            const result = v
-            if (result && result.access_token){
-              window.localStorage.setItem('token', result.access_token);
-              document.cookie="refreshToken="
-              console.log(v);
+            if (v && v.access_token){
+              window.localStorage.setItem('token', v.access_token);
               request = req.clone({
-                headers: req.headers.set('Authorization', `Bearer ${result.access_token}`)
+                headers: req.headers.set('Authorization', `Bearer ${v.access_token}`)
               })
             }
+            return next.handle(request)
+            .pipe(
+              catchError(this.handleError)
+            );
           }
         })
       }
     }
     return next.handle(request)
-      .pipe(
-        catchError(this.handleError)
-      );
+    .pipe(
+      catchError(this.handleError)
+    );
 
   }
 
   private handleError(error: HttpErrorResponse) {
     try {
       if (error.status){
-        console.log(error)
-        if (error.status == 401){
-          window.localStorage.removeItem('token');
-          this.router.navigate([''])
+        if (error.status === 401){
+          location.reload();
         }
       }
     } catch (error) {
       console.log(error)
     }
-    return throwError(error);
+    return new Observable<never>();
   }
 }

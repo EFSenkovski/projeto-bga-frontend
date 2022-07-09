@@ -21,10 +21,6 @@ export class FormMovimentacoesComponent implements OnInit {
   hide = true;
   title: string;
   caixas$: Observable<Caixa[]>;
-  tiposMovimento = [
-    {value: 'E', viewValue: 'Entrada'},
-    {value: 'S', viewValue: 'Saída'}
-  ]
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,10 +37,11 @@ export class FormMovimentacoesComponent implements OnInit {
       id: [null],
       caixa:[null],
       usuario: [null],
-      empresa: [null],
+      centro_custo: [null],
+      id_pessoa: [null],
+      id_servico: [null],
       descricao: [null],
       valor: [null],
-      tipoMovimento: [null],
       dataMovimento: [null],
 
     })
@@ -56,7 +53,7 @@ export class FormMovimentacoesComponent implements OnInit {
           id: movimentacao.id,
           caixa: movimentacao.caixa.descricao,
           usuario: movimentacao.usuario.nome,
-          empresa: movimentacao.caixa.empresa.razaoSocial,
+          centro_custo: movimentacao.caixa.empresa.razaoSocial,
           descricao: movimentacao.descricao,
           valor: movimentacao.valor,
           tipoMovimentacao: movimentacao.tipoMovimento,

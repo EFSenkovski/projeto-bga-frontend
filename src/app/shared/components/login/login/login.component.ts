@@ -1,3 +1,5 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,7 +25,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private usuarioService: UsuariosService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     if (this.usuarioService.isUserLoggedIn()){
       this.router.navigate([''])
@@ -48,21 +51,22 @@ export class LoginComponent implements OnInit {
       },
       error: (e) => {
         this.hideSpinner = true;
-        try {
-          if (e.error.dados) {
-            this.onError('Usuário/Senha inválido(s)');
-          }
-        } catch (error) {
-          this.onError(e.message);
+        if (e.status = 400) {
+          this.snackBar.open('Usuário/Senha inválidos', '', {duration: 10000})
+        } else {
+          this.onError(e);
         }
       }
     })
 
   }
 
-  onError(error: string) {
+  onError(error: HttpErrorResponse){
     this.dialog.open(ErrorDialogComponent, {
-      data: error,
+      data: {
+        titulo: error.status,
+        mensagem: error.message
+      }
     });
   }
 

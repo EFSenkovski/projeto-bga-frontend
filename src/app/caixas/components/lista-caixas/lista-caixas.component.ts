@@ -5,7 +5,6 @@ import { Caixa } from './../../model/caixa';
 import { of, Observable, catchError } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { EmpresasService } from './../../../empresas/services/empresas.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -16,7 +15,7 @@ import { Component, OnInit } from '@angular/core';
 export class ListaCaixasComponent implements OnInit {
 
   caixas$: Observable<Caixa[]>;
-  displayedColumns = ['id','empresa','descricao','valorAtual','dataUltimaMovimentacao','actions']
+  displayedColumns = ['id','descricao','valorAtual','dataUltimaMovimentacao','actions']
 
   constructor(
     private caixasService: CaixasService,
@@ -27,7 +26,6 @@ export class ListaCaixasComponent implements OnInit {
     this.caixas$ = caixasService.list()
     .pipe(
       catchError(error => {
-        console.log(error);
         this.onError(error)
         return of([])
       })
