@@ -11,7 +11,7 @@ export class PessoasService {
   constructor(private httpClient: HttpClient) {}
 
   private readonly APIPessoas = 'http://localhost:8080/pessoas';
-  private readonly APITiposPessoas = 'http://localhost:8080/tipopessoa';
+  private readonly APITiposPessoas = 'http://localhost:8080/tipospessoa';
 
   list() {
     return this.httpClient.get<Pessoa[]>(this.APIPessoas).pipe(take(1));
