@@ -10,7 +10,7 @@ export class MovimentacoesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private readonly API = 'http://localhost:8080/movimentacoes';
+  private readonly API = 'https://projeto-bga-spring.herokuapp.com/movimentacoes';
 
   list(){
     return this.httpClient.get<Movimentacao[]>(this.API)

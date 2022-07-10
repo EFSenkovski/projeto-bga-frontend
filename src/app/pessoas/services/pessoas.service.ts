@@ -10,8 +10,8 @@ import { Injectable } from '@angular/core';
 export class PessoasService {
   constructor(private httpClient: HttpClient) {}
 
-  private readonly APIPessoas = 'http://localhost:8080/pessoas';
-  private readonly APITiposPessoas = 'http://localhost:8080/tipospessoa';
+  private readonly APIPessoas = 'https://projeto-bga-spring.herokuapp.com/pessoas';
+  private readonly APITiposPessoas = 'https://projeto-bga-spring.herokuapp.com/tipospessoa';
 
   list() {
     return this.httpClient.get<Pessoa[]>(this.APIPessoas).pipe(take(1));

@@ -11,8 +11,8 @@ import { Usuario } from './../model/usuario';
 export class UsuariosService {
   constructor(private httpClient: HttpClient) {}
 
-  private readonly API = 'http://localhost:8080/usuarios';
-  private readonly APILogin = 'http://localhost:8080/oauth/token';
+  private readonly API = 'https://projeto-bga-spring.herokuapp.com/usuarios';
+  private readonly APILogin = 'https://projeto-bga-spring.herokuapp.com/oauth/token';
 
   list() {
     return this.httpClient.get<Usuario[]>(this.API).pipe(take(1));

@@ -10,7 +10,7 @@ export class CentroscustoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private readonly APICentroCustos = 'http://localhost:8080/centrocusto';
+  private readonly APICentroCustos = 'https://projeto-bga-spring.herokuapp.com/centrocusto';
 
   list() {
     return this.httpClient.get<CentroCusto[]>(this.APICentroCustos).pipe(take(1));

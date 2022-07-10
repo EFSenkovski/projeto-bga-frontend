@@ -10,7 +10,7 @@ export class CaixasService {
 
   constructor(private httpClient: HttpClient) {}
 
-  private readonly API = 'http://localhost:8080/caixas';
+  private readonly API = 'https://projeto-bga-spring.herokuapp.com/caixas';
 
   list(){
     return this.httpClient.get<Caixa[]>(this.API)
