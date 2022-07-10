@@ -16,7 +16,7 @@
     <section class="pesquisa">
       <mat-form-field class="pesquisa-campo">
         <mat-label>Filtrar por Nome/Razão Social</mat-label>
-        <input matInput [(ngModel)]="filtro" (keydown.enter)="onPesquisar()" autofocus #inputFiltro>
+        <input matInput [(ngModel)]="filtro" (keydown.enter)="onPesquisar()" #inputFiltro>
       </mat-form-field>
 
       <button mat-mini-fab color="primary" class="botao-pesquisar" (click)="onPesquisar()">
